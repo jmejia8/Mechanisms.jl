@@ -13,7 +13,7 @@ function grashof(p)
 end
 
 function sequence(θ2)
-	n = length(θ2)
+    n = length(θ2)
     offset = θ2[1]
 
     nvector = zeros(n)
@@ -47,14 +47,14 @@ function sequence(θ2)
 end
 
 function fourBarKinetics(p::Vector{Float64}, θ2_values::Vector{Float64})
-	# p = [r1, r2, r3, r4, rcx, rcy θ0, x0, y0]
+    # p = [r1, r2, r3, r4, rcx, rcy θ0, x0, y0]
     # θ2_values = [θ21, ..., θ2n]
     θ1 = 0.0
 
     C = zeros( length(θ2_values),2 )
 
     i = 1
-	for θ2 = θ2_values
+    for θ2 = θ2_values
         A1 = 2p[3] * (p[2] * cos(θ2) - p[1]*cos(θ1))
         B1 = 2p[3] * (p[2] * sin(θ2) - p[1]*sin(θ1))
         C1 = p[1]^2+p[2]^2+p[3]^2-p[4]^2- 2p[1]*p[2]*cos(θ2-θ1)
@@ -94,7 +94,7 @@ function objectiveFunction(p, precisionPts)
     return quadraticError(C, precisionPts)
 end
 
-function contraints(p, precisionPts)
+function contraints(p)
     if length(p) < 10
         return grashof(p)
     end
@@ -105,14 +105,14 @@ end
 function getOptimizationProblem(precisionPts::Matrix{Float64})
     return 9 + size(precisionPts,1), # search space dimension
            p -> objectiveFunction(p, precisionPts),
-           p -> contraints(p, precisionPts)
+           p -> 2contraints(p, precisionPts)
 end
 
 # not synchronized strategy pair points
 function getOptimizationProblem(precisionPts::Matrix{Float64}, precisionPts2::Matrix{Float64})
     return 9 + size(precisionPts,1), # search space dimension
            p -> objectiveFunction(p, precisionPts) + objectiveFunction(p, precisionPts2),
-           p -> contraints(p, precisionPts) + contraints(p, precisionPts2)
+           p -> contraints(p)
 end
 
 # synchronized strategy
