@@ -120,5 +120,5 @@ function getOptimizationProblem(precisionPts::Matrix{Float64}, X0::Vector{Float6
     # X0 = [θ0, x0, y0]
     return 6, # search space dimension
            p -> objectiveFunction([p; X0; θ2], precisionPts),
-           p -> contraints(p, precisionPts)
+           p -> contraints(p)
 end
