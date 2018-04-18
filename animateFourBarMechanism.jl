@@ -70,8 +70,6 @@ function animateFourBarMechanism(p; precision_points=nothing,
     C, X0, X1, X2, X3 = generateTrayectory(p, nframes)
 
     @gif for t = 1:nframes
-        # xlimits=xlms, ylimits=ylms 
-        # title=@sprintf("Error: %e", my_error)
         plot(title=title, xlimits=xlimits, ylimits=ylimits)
         plot!(C[:,1], C[:,2], linestyle=:dot, linecolor=:green)
 
