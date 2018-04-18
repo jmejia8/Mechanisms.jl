@@ -105,14 +105,14 @@ end
 function getOptimizationProblem(precisionPts::Matrix{Float64})
     return 9 + size(precisionPts,1), # search space dimension
            p -> objectiveFunction(p, precisionPts),
-           p -> 2contraints(p, precisionPts)
+           p -> contraints(p)
 end
 
 # not synchronized strategy pair points
 function getOptimizationProblem(precisionPts::Matrix{Float64}, precisionPts2::Matrix{Float64})
     return 9 + size(precisionPts,1), # search space dimension
            p -> objectiveFunction(p, precisionPts) + objectiveFunction(p, precisionPts2),
-           p -> contraints(p)
+           p -> 2contraints(p)
 end
 
 # synchronized strategy
