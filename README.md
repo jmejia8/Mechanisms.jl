@@ -1,5 +1,8 @@
 # Mechanisms
 
+ Kinetics of important Mechanisms, prepared to constrained optimization.
+
+
 [![Build Status](https://travis-ci.org/jmejia8/Mechanisms.jl.svg?branch=master)](https://travis-ci.org/jmejia8/Mechanisms.jl)
 
 # Example
