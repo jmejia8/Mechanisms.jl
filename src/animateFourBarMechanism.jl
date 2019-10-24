@@ -1,13 +1,3 @@
-if Pkg.installed("Plots") == nothing
-    Pkg.add("Plots")
-end
-
-using Plots
-
-gr(size=(500, 500),
-   dpi = 19,
-   legend=false)
-
 function generateTrayectory(p, nframes=30)
     # Save mechanism dynamics 
     if length(p) == 6

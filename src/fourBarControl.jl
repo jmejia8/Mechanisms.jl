@@ -1,10 +1,3 @@
-if Pkg.installed("DifferentialEquations") == nothing
-    Pkg.add("DifferentialEquations")
-end
-
-using DifferentialEquations
-
-
 # Solve using Runge-Kutta (4th order)
 function myode45(f::Function, tspan::Tuple, x0::Vector{Float64}, KC::Vector{Float64})
     
