@@ -1,5 +1,5 @@
 using Mechanisms
-using Base.Test
+using Test
 
 # tests here
 function mytest()
