@@ -16,7 +16,7 @@ function generateTrayectory(p, nframes=30)
     
     C = zeros(nframes, 2)
     i = 1
-    for θ2 = linspace(0, 2π, nframes)
+    for θ2 = range(0, 2π, length = nframes)
 
         A1 = 2p[3] * (p[2] * cos(θ2) - p[1]*cos(θ1))
         B1 = 2p[3] * (p[2] * sin(θ2) - p[1]*sin(θ1))
